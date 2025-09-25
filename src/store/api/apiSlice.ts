@@ -1,8 +1,51 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import { User, Product, Order, Category, ApiResponse, PaginatedResponse } from '@/types'
 
-// Define the base URL for the API
-const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://your-live-server-url.com'
+// Define the base URL for the API (defaults to provided live API)
+const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || 'https://api-fresh-harvest.code-commando.com/api/v1/'
+
+// Remote API types
+interface RemoteProduct {
+  id?: string
+  _id?: string
+  productName?: string
+  name?: string
+  description?: string
+  price?: number | string
+  images?: string[]
+  image?: string
+  categoryId?: string
+  category?: string
+  stock?: number | string
+  createdAt?: string
+  updatedAt?: string
+}
+
+interface ProductsListResponse {
+  success: boolean
+  message?: string
+  data: RemoteProduct[]
+}
+
+interface ProductResponse {
+  success: boolean
+  data: RemoteProduct
+}
+
+// Helpers to adapt remote API product shape -> internal Product type
+function adaptRemoteProduct(remote: RemoteProduct): Product {
+  return {
+    id: remote.id ?? remote._id ?? '',
+    name: remote.productName ?? remote.name ?? 'Product',
+    description: remote.description ?? '',
+    price: Number(remote.price ?? 0),
+    image: Array.isArray(remote.images) && remote.images.length > 0 ? remote.images[0] : (remote.image ?? ''),
+    category: remote.categoryId ?? remote.category ?? '',
+    stock: Number(remote.stock ?? 0),
+    createdAt: remote.createdAt ?? '',
+    updatedAt: remote.updatedAt ?? '',
+  }
+}
 
 export const api = createApi({
   reducerPath: 'api',
@@ -55,17 +98,26 @@ export const api = createApi({
       invalidatesTags: ['User'],
     }),
 
-    // Product endpoints
+    // Product endpoints (adapted to provided API)
     getProducts: builder.query<PaginatedResponse<Product>, { page?: number; limit?: number; category?: string }>({
-      query: ({ page = 1, limit = 10, category } = {}) => {
-        const params = new URLSearchParams({ page: page.toString(), limit: limit.toString() })
-        if (category) params.append('category', category)
-        return `products?${params.toString()}`
+      // The provided API returns all products at GET /products
+      query: () => `products`,
+      transformResponse: (response: ProductsListResponse): PaginatedResponse<Product> => {
+        const adapted = Array.isArray(response?.data) ? response.data.map(adaptRemoteProduct) : []
+        return {
+          data: adapted,
+          total: adapted.length,
+          page: 1,
+          limit: adapted.length,
+          totalPages: 1,
+        }
       },
       providesTags: ['Product'],
     }),
     getProductById: builder.query<Product, string>({
       query: (id) => `products/${id}`,
+      transformResponse: (response: ProductResponse | RemoteProduct) =>
+        adaptRemoteProduct((response as ProductResponse)?.data ?? (response as RemoteProduct)),
       providesTags: (result, error, id) => [{ type: 'Product', id }],
     }),
     createProduct: builder.mutation<ApiResponse<Product>, Partial<Product>>({

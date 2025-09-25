@@ -23,7 +23,7 @@ export function FreshHarvestsHeader() {
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/shop" className="text-gray-700 hover:text-green-600 font-medium">
+          <Link href="/products" className="text-gray-700 hover:text-green-600 font-medium">
             Shop
           </Link>
           <Link href="/about" className="text-gray-700 hover:text-green-600 font-medium">
@@ -82,7 +82,7 @@ export function FreshHarvestsHeader() {
         <div className="md:hidden border-t border-gray-200 py-4 bg-white relative z-50">
           <nav className="flex flex-col space-y-4">
             <Link 
-              href="/shop" 
+              href="/products" 
               className="text-gray-700 hover:text-green-600 font-medium px-4 py-2"
               onClick={() => setIsMenuOpen(false)}
             >

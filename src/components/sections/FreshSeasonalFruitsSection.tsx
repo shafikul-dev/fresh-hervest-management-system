@@ -1,8 +1,14 @@
 'use client'
 
+import Link from 'next/link'
 import { FreshSeasonalFruitsCard } from '@/components/ui/FreshSeasonalFruitsCard'
 
 export function FreshSeasonalFruitsSection() {
+  // Known product ids from live API for deep links
+  const appleId = '6752c7281cdb919fe028cf2a'
+  const bananaId = '67514a611cdb919fe028cf09'
+  const kiwiId = '6751563d1cdb919fe028cf0d'
+
   return (
     <section className="py-12 sm:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
@@ -31,42 +37,44 @@ export function FreshSeasonalFruitsSection() {
 
         {/* Cards Grid - Responsive Layout */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-          {/* Main Featured Card */}
+          {/* Main Featured Card (informational) */}
           <div className="sm:col-span-2 lg:col-span-1">
             <FreshSeasonalFruitsCard />
           </div>
           
-          {/* Additional Fruit Cards */}
-          <div className="bg-gray-100 rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          {/* Apple Card (clickable) */}
+          <Link href={`/products/${appleId}`} className="bg-gray-100 rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div className="text-center">
               <div className="text-5xl sm:text-6xl mb-4">🍎</div>
               <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Fresh Apples</h3>
               <p className="text-sm sm:text-base text-gray-600">Crisp and sweet</p>
             </div>
-          </div>
+          </Link>
           
-          <div className="bg-gray-100 rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          {/* Banana Card (clickable) */}
+          <Link href={`/products/${bananaId}`} className="bg-gray-100 rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div className="text-center">
               <div className="text-5xl sm:text-6xl mb-4">🍌</div>
               <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Organic Bananas</h3>
               <p className="text-sm sm:text-base text-gray-600">Perfectly ripe</p>
             </div>
-          </div>
+          </Link>
           
-          <div className="bg-gray-100 rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
+          {/* Kiwi Card (clickable) */}
+          <Link href={`/products/${kiwiId}`} className="bg-gray-100 rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
             <div className="text-center">
-              <div className="text-5xl sm:text-6xl mb-4">🍇</div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Sweet Grapes</h3>
+              <div className="text-5xl sm:text-6xl mb-4">🥝</div>
+              <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Fresh Kiwi</h3>
               <p className="text-sm sm:text-base text-gray-600">Juicy and fresh</p>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Call to Action */}
         <div className="text-center mt-12">
-          <button className="bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors">
+          <Link href="/products" className="inline-block bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors">
             Shop Fresh Fruits
-          </button>
+          </Link>
         </div>
       </div>
     </section>

@@ -103,57 +103,27 @@ export function FreshHarvestsHero() {
       <div className="flex-1 bg-green-500 relative overflow-hidden lg:block">
         {/* Background Pattern - Vegetable Illustrations */}
         <div className="absolute inset-0 opacity-20">
-          {/* Carrot */}
           <div className="absolute top-20 left-10 w-8 h-12 bg-green-300 rounded-full transform rotate-12"></div>
-          {/* Broccoli */}
           <div className="absolute top-40 right-20 w-10 h-10 bg-green-300 rounded-full"></div>
-          {/* Corn */}
           <div className="absolute bottom-32 left-20 w-6 h-16 bg-green-300 rounded-full"></div>
-          {/* Bell Pepper */}
           <div className="absolute bottom-20 right-10 w-12 h-8 bg-green-300 rounded-full"></div>
-          {/* Additional vegetables */}
           <div className="absolute top-60 left-1/4 w-6 h-6 bg-green-300 rounded-full"></div>
           <div className="absolute bottom-40 right-1/3 w-8 h-8 bg-green-300 rounded-full"></div>
         </div>
         
         {/* Main Image */}
-        <div className="relative z-10 flex items-center justify-center h-full p-8">
-          <div className="relative">
-            {/* Floating Leaf */}
-            <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 z-20">
-              <svg className="w-8 h-8 text-green-600" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 6,17.25C7.5,17.25 9,16.5 10,15.5C11,14.5 12,13.5 13,12.5C14,11.5 15,10.5 16,9.5C17,8.5 17,8 17,8Z"/>
-              </svg>
-            </div>
+        <div className="relative z-10 flex items-center justify-center h-full p-6 sm:p-8">
+          <div className="relative w-full max-w-xl">
+            {/* Girl with Vegetables - responsive image */}
+            <PlaceholderImage
+              src="/images/girl with vegetable.jpg"
+              width={800}
+              height={800}
+              alt="Girl with fresh vegetables"
+              className="w-full h-auto rounded-lg shadow-lg"
+            />
             
-            {/* Girl with Vegetables */}
-            <div className="relative">
-              <PlaceholderImage
-                width={500}
-                height={600}
-                alt="Girl with fresh vegetables"
-                className="rounded-lg bg-white"
-              >
-                <div className="text-center p-8">
-                  <div className="text-8xl mb-6">👧</div>
-                  <div className="text-5xl mb-4">🥕🥬🍅🥒</div>
-                  <p className="text-lg text-gray-600 font-medium">Fresh Vegetables</p>
-                  <p className="text-sm text-gray-500 mt-2">From local farms to your table</p>
-                </div>
-              </PlaceholderImage>
-              
-              {/* Spark Icons */}
-              <div className="absolute top-20 right-8">
-                <svg className="w-6 h-6 text-orange-400 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-              </div>
-              <div className="absolute top-32 right-12">
-                <svg className="w-4 h-4 text-orange-400 animate-pulse" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-              </div>
-            </div>
+            {/* Optional spark icons removed for cleaner photo focus */}
           </div>
         </div>
       </div>

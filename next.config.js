@@ -18,8 +18,13 @@ const nextConfig = {
   
   // Image optimization
   images: {
-    domains: ['your-api-domain.com'], // Add your API domain here
+    domains: ['your-api-domain.com'],
     formats: ['image/webp', 'image/avif'],
+    remotePatterns: [
+      { protocol: 'https', hostname: 'i.ibb.co.com' },
+      { protocol: 'https', hostname: 'i.ibb.co' },
+      { protocol: 'https', hostname: 'upload.wikimedia.org' },
+    ],
   },
   
   // Environment variables
