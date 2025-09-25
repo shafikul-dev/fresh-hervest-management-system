@@ -1,16 +1,13 @@
-import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
-import { Hero } from '@/components/sections/Hero'
+import { FreshHarvestsHeader } from '@/components/layout/FreshHarvestsHeader'
+import { FreshHarvestsHero } from '@/components/sections/FreshHarvestsHero'
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex flex-col">
-      <Header />
+    <div className="min-h-screen bg-white">
+      <FreshHarvestsHeader />
       <main className="flex-1">
-        <Hero />
-        {/* Additional sections will be added based on Figma designs */}
+        <FreshHarvestsHero />
       </main>
-      <Footer />
     </div>
   )
 }
