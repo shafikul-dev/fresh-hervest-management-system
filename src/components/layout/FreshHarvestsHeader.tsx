@@ -64,7 +64,7 @@ export function FreshHarvestsHeader() {
 
         {/* Mobile menu button */}
         <button
-          className="md:hidden p-2"
+          className="md:hidden p-2 ml-2"
           onClick={() => setIsMenuOpen(!isMenuOpen)}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,23 +79,40 @@ export function FreshHarvestsHeader() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-gray-200 py-4">
+        <div className="md:hidden border-t border-gray-200 py-4 bg-white relative z-50">
           <nav className="flex flex-col space-y-4">
-            <Link href="/shop" className="text-gray-700 hover:text-green-600 font-medium px-4">
+            <Link 
+              href="/shop" 
+              className="text-gray-700 hover:text-green-600 font-medium px-4 py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Shop
             </Link>
-            <Link href="/about" className="text-gray-700 hover:text-green-600 font-medium px-4">
+            <Link 
+              href="/about" 
+              className="text-gray-700 hover:text-green-600 font-medium px-4 py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
               About us
             </Link>
-            <Link href="/blog" className="text-gray-700 hover:text-green-600 font-medium px-4">
+            <Link 
+              href="/blog" 
+              className="text-gray-700 hover:text-green-600 font-medium px-4 py-2"
+              onClick={() => setIsMenuOpen(false)}
+            >
               Blog
             </Link>
+            <div className="px-4 py-2 border-t border-gray-200 mt-4">
+              <button className="bg-green-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors w-full">
+                Sign in
+              </button>
+            </div>
           </nav>
         </div>
       )}
 
-      {/* User Profile Section - Overlay */}
-      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+      {/* User Profile Section - Overlay - Hidden on mobile to avoid conflicts */}
+      <div className="hidden lg:block absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
         <div className="flex flex-col items-center">
           <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center border-4 border-white shadow-lg">
             <span className="text-white font-semibold text-xl">JD</span>

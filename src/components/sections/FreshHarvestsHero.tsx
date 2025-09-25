@@ -7,9 +7,9 @@ export function FreshHarvestsHero() {
   const [showSpecialOffer] = useState(true)
 
   return (
-    <div className="flex min-h-screen relative">
+    <div className="flex flex-col lg:flex-row min-h-screen relative">
       {/* Left Section - Content */}
-      <div className="flex-1 bg-gray-100 px-4 sm:px-6 py-8 flex flex-col justify-center relative">
+      <div className="flex-1 bg-gray-100 px-4 sm:px-6 py-8 lg:py-16 flex flex-col justify-center relative">
         {/* Decorative Leaves */}
         <div className="absolute top-10 left-4 text-green-500 opacity-60">
           <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -22,7 +22,7 @@ export function FreshHarvestsHero() {
           </svg>
         </div>
         
-        <div className="max-w-lg mx-auto lg:mx-0">
+        <div className="max-w-lg mx-auto lg:mx-0 lg:max-w-none">
           {/* Welcome Text */}
           <p className="text-green-500 text-sm font-medium mb-4">Welcome to Fresh Harvest</p>
           
@@ -100,7 +100,7 @@ export function FreshHarvestsHero() {
       </div>
       
       {/* Right Section - Image */}
-      <div className="flex-1 bg-green-500 relative overflow-hidden hidden lg:block">
+      <div className="flex-1 bg-green-500 relative overflow-hidden lg:block">
         {/* Background Pattern - Vegetable Illustrations */}
         <div className="absolute inset-0 opacity-20">
           {/* Carrot */}
@@ -155,24 +155,6 @@ export function FreshHarvestsHero() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      
-      {/* Mobile Image Section */}
-      <div className="lg:hidden bg-green-500 py-8 px-6">
-        <div className="max-w-md mx-auto">
-          <PlaceholderImage
-            width={400}
-            height={300}
-            alt="Girl with fresh vegetables"
-            className="rounded-lg"
-          >
-            <div className="text-center">
-              <div className="text-6xl mb-4">👧</div>
-              <div className="text-4xl mb-2">🥕🥬🍅</div>
-              <p className="text-sm text-gray-600">Fresh Vegetables</p>
-            </div>
-          </PlaceholderImage>
         </div>
       </div>
     </div>
