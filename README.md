@@ -263,4 +263,4 @@ This project is created for SM Technology's frontend development task.
 ---
 
 **Project Submission Date**: September 27, 2025, 11:59 PM
-**Submission Link**: [Submit Here](https://forms.gle/TpfNJBsXcWqjLQmE6)
+**Submission Link**: [Submit Here](https://forms.gle/TpfNJBsXcWqjLQmE6)# fresh-hervest-management-system
