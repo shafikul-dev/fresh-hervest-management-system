@@ -7,7 +7,7 @@ export function FreshHarvestsHeader() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   return (
-    <header className="bg-white px-6 py-4">
+    <header className="bg-white px-4 sm:px-6 py-4">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
         <div className="flex items-center space-x-3">
@@ -18,7 +18,7 @@ export function FreshHarvestsHeader() {
               <div className="absolute w-4 h-4 bg-green-500 rounded-full transform -rotate-45"></div>
             </div>
           </div>
-          <span className="text-2xl font-bold text-green-800">Fresh Harvests</span>
+          <span className="text-xl sm:text-2xl font-bold text-green-800">Fresh Harvests</span>
         </div>
 
         {/* Desktop Navigation */}
@@ -35,13 +35,13 @@ export function FreshHarvestsHeader() {
         </nav>
 
         {/* User Actions */}
-        <div className="flex items-center space-x-6">
-          {/* Heart Icon with label */}
-          <button className="flex items-center space-x-1 hover:bg-gray-100 rounded-lg px-2 py-1 transition-colors">
+        <div className="flex items-center space-x-2 sm:space-x-4 lg:space-x-6">
+          {/* Heart Icon with label - hidden on small screens */}
+          <button className="hidden sm:flex items-center space-x-1 hover:bg-gray-100 rounded-lg px-2 py-1 transition-colors">
             <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
             </svg>
-            <span className="text-sm text-gray-600">Favorites</span>
+            <span className="text-sm text-gray-600 hidden lg:inline">Favorites</span>
           </button>
 
           {/* Cart Icon with notification and label */}
@@ -49,15 +49,16 @@ export function FreshHarvestsHeader() {
             <svg className="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-2.5 5M7 13l2.5 5m6-5v6a2 2 0 01-2 2H9a2 2 0 01-2-2v-6m8 0V9a2 2 0 00-2-2H9a2 2 0 00-2 2v4.01" />
             </svg>
-            <span className="text-sm text-gray-600">Cart</span>
+            <span className="text-sm text-gray-600 hidden lg:inline">Cart</span>
             <div className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center">
               <span className="text-xs text-white font-bold">3</span>
             </div>
           </button>
 
           {/* Sign In Button */}
-          <button className="bg-green-500 text-white px-6 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors">
-            Sign in
+          <button className="bg-green-500 text-white px-3 sm:px-4 lg:px-6 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors text-sm sm:text-base">
+            <span className="hidden sm:inline">Sign in</span>
+            <span className="sm:hidden">Sign in</span>
           </button>
         </div>
 

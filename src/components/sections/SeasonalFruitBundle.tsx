@@ -31,52 +31,52 @@ export function SeasonalFruitBundle() {
   }, [])
 
   return (
-    <section className="py-16 bg-white">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-12 sm:py-16 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         <div className="flex flex-col lg:flex-row items-center gap-12">
           {/* Left Content */}
           <div className="flex-1">
-            <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-6">
               Seasonal Fruit Bundle
             </h2>
             
             <div className="mb-8">
-              <p className="text-lg text-gray-600 mb-2">Discount up to</p>
-              <p className="text-4xl font-bold text-orange-500">80% OFF</p>
+              <p className="text-base sm:text-lg text-gray-600 mb-2">Discount up to</p>
+              <p className="text-3xl sm:text-4xl font-bold text-orange-500">80% OFF</p>
             </div>
 
             {/* Countdown Timer */}
             <div className="mb-8">
-              <div className="flex space-x-4">
+              <div className="flex space-x-2 sm:space-x-4">
                 <div className="text-center">
-                  <div className="bg-gray-100 text-gray-800 px-4 py-3 rounded-lg font-bold text-2xl min-w-[80px]">
+                  <div className="bg-gray-100 text-gray-800 px-2 sm:px-4 py-2 sm:py-3 rounded-lg font-bold text-lg sm:text-2xl min-w-[60px] sm:min-w-[80px]">
                     {timeLeft.days.toString().padStart(2, '0')}
                   </div>
-                  <p className="text-sm text-gray-600 mt-2">Days</p>
+                  <p className="text-xs sm:text-sm text-gray-600 mt-2">Days</p>
                 </div>
                 <div className="text-center">
-                  <div className="bg-gray-100 text-gray-800 px-4 py-3 rounded-lg font-bold text-2xl min-w-[80px]">
+                  <div className="bg-gray-100 text-gray-800 px-2 sm:px-4 py-2 sm:py-3 rounded-lg font-bold text-lg sm:text-2xl min-w-[60px] sm:min-w-[80px]">
                     {timeLeft.hours.toString().padStart(2, '0')}
                   </div>
-                  <p className="text-sm text-gray-600 mt-2">Hour</p>
+                  <p className="text-xs sm:text-sm text-gray-600 mt-2">Hour</p>
                 </div>
                 <div className="text-center">
-                  <div className="bg-gray-100 text-gray-800 px-4 py-3 rounded-lg font-bold text-2xl min-w-[80px]">
+                  <div className="bg-gray-100 text-gray-800 px-2 sm:px-4 py-2 sm:py-3 rounded-lg font-bold text-lg sm:text-2xl min-w-[60px] sm:min-w-[80px]">
                     {timeLeft.minutes.toString().padStart(2, '0')}
                   </div>
-                  <p className="text-sm text-gray-600 mt-2">Min</p>
+                  <p className="text-xs sm:text-sm text-gray-600 mt-2">Min</p>
                 </div>
                 <div className="text-center">
-                  <div className="bg-gray-100 text-gray-800 px-4 py-3 rounded-lg font-bold text-2xl min-w-[80px]">
+                  <div className="bg-gray-100 text-gray-800 px-2 sm:px-4 py-2 sm:py-3 rounded-lg font-bold text-lg sm:text-2xl min-w-[60px] sm:min-w-[80px]">
                     {timeLeft.seconds.toString().padStart(2, '0')}
                   </div>
-                  <p className="text-sm text-gray-600 mt-2">Second</p>
+                  <p className="text-xs sm:text-sm text-gray-600 mt-2">Second</p>
                 </div>
               </div>
             </div>
 
             {/* Code Button */}
-            <button className="bg-green-500 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-green-600 transition-colors">
+            <button className="bg-green-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold text-base sm:text-lg hover:bg-green-600 transition-colors w-full sm:w-auto">
               CODE: FRESH28
             </button>
           </div>

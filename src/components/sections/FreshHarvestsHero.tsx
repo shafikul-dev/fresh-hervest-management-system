@@ -9,7 +9,7 @@ export function FreshHarvestsHero() {
   return (
     <div className="flex min-h-screen relative">
       {/* Left Section - Content */}
-      <div className="flex-1 bg-gray-100 px-6 py-8 flex flex-col justify-center relative">
+      <div className="flex-1 bg-gray-100 px-4 sm:px-6 py-8 flex flex-col justify-center relative">
         {/* Decorative Leaves */}
         <div className="absolute top-10 left-4 text-green-500 opacity-60">
           <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -27,7 +27,7 @@ export function FreshHarvestsHero() {
           <p className="text-green-500 text-sm font-medium mb-4">Welcome to Fresh Harvest</p>
           
           {/* Main Heading */}
-          <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
             Fresh Fruits and<br />Vegetables
           </h1>
           
@@ -37,7 +37,7 @@ export function FreshHarvestsHero() {
           </p>
           
           {/* Shop Now Button */}
-          <button className="bg-orange-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-orange-600 transition-colors mb-8">
+          <button className="bg-orange-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-orange-600 transition-colors mb-8 w-full sm:w-auto">
             Shop Now
           </button>
           
@@ -51,19 +51,19 @@ export function FreshHarvestsHero() {
                 </svg>
               </div>
               
-              <div className="bg-white border border-gray-300 rounded-xl p-6 shadow-lg">
+              <div className="bg-white border border-gray-300 rounded-xl p-4 sm:p-6 shadow-lg">
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
                     <p className="text-gray-500 font-semibold text-sm mb-2">Special Offer</p>
-                    <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">Fresh Salad</h3>
-                    <p className="text-green-600 font-bold text-base md:text-lg mb-4">Up to 70% off</p>
-                    <button className="bg-green-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors text-sm">
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2">Fresh Salad</h3>
+                    <p className="text-green-600 font-bold text-sm sm:text-base md:text-lg mb-4">Up to 70% off</p>
+                    <button className="bg-green-500 text-white px-3 sm:px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors text-xs sm:text-sm">
                       CODE: FRESH25
                     </button>
                   </div>
-                  <div className="ml-4 md:ml-6">
-                    <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-                      <div className="text-2xl">🥗</div>
+                  <div className="ml-3 sm:ml-4 md:ml-6">
+                    <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
+                      <div className="text-green-600 text-lg sm:text-xl md:text-2xl">🥗</div>
                     </div>
                   </div>
                 </div>

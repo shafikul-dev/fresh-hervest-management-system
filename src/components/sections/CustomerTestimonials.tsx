@@ -4,8 +4,8 @@ import { PlaceholderImage } from '@/components/ui/PlaceholderImage'
 
 export function CustomerTestimonials() {
   return (
-    <section className="py-16 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="py-12 sm:py-16 bg-gray-50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6">
         {/* Section Header */}
         <div className="text-center mb-16 relative">
           {/* Decorative leaves */}
@@ -20,10 +20,10 @@ export function CustomerTestimonials() {
             </svg>
           </div>
           
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">
             What Our Customers Say
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
             Hear from our satisfied customers about their experience with Fresh Harvests
           </p>
         </div>
@@ -53,8 +53,8 @@ export function CustomerTestimonials() {
 
           {/* Testimonial Text */}
           <div className="flex-1">
-            <div className="bg-gray-100 rounded-xl p-8 relative">
-              <div className="text-lg text-gray-700 leading-relaxed mb-6">
+            <div className="bg-gray-100 rounded-xl p-6 sm:p-8 relative">
+              <div className="text-base sm:text-lg text-gray-700 leading-relaxed mb-6">
                 &ldquo;Today I received my Fresh Harvest! The quality of their products is outstanding. 
                 It&apos;s always fresh, flavorful, and delicious. The convenience of ordering online and 
                 having it delivered to my doorstep is also a big plus! Fresh Harvest has become my 
