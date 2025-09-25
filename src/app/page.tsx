@@ -1,6 +1,7 @@
 import { FreshHarvestsHeader } from '@/components/layout/FreshHarvestsHeader'
 import { FreshHarvestsFooter } from '@/components/layout/FreshHarvestsFooter'
 import { FreshHarvestsHero } from '@/components/sections/FreshHarvestsHero'
+import { FreshSeasonalFruitsSection } from '@/components/sections/FreshSeasonalFruitsSection'
 import { SeasonalFruitBundle } from '@/components/sections/SeasonalFruitBundle'
 import { CustomerTestimonials } from '@/components/sections/CustomerTestimonials'
 import { BlogSection } from '@/components/sections/BlogSection'
@@ -11,6 +12,7 @@ export default function Home() {
       <FreshHarvestsHeader />
       <main className="flex-1">
         <FreshHarvestsHero />
+        <FreshSeasonalFruitsSection />
         <SeasonalFruitBundle />
         <CustomerTestimonials />
         <BlogSection />
