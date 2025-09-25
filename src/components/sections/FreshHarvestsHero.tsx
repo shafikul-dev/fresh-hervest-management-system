@@ -7,23 +7,33 @@ export function FreshHarvestsHero() {
   const [showSpecialOffer] = useState(true)
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen relative">
       {/* Left Section - Content */}
-      <div className="flex-1 bg-white px-6 py-8 flex flex-col justify-center">
+      <div className="flex-1 bg-gray-100 px-6 py-8 flex flex-col justify-center relative">
+        {/* Decorative Leaves */}
+        <div className="absolute top-10 left-4 text-green-500 opacity-60">
+          <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 6,17.25C7.5,17.25 9,16.5 10,15.5C11,14.5 12,13.5 13,12.5C14,11.5 15,10.5 16,9.5C17,8.5 17,8 17,8Z"/>
+          </svg>
+        </div>
+        <div className="absolute top-1/2 left-8 text-green-500 opacity-40">
+          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 6,17.25C7.5,17.25 9,16.5 10,15.5C11,14.5 12,13.5 13,12.5C14,11.5 15,10.5 16,9.5C17,8.5 17,8 17,8Z"/>
+          </svg>
+        </div>
+        
         <div className="max-w-lg mx-auto lg:mx-0">
           {/* Welcome Text */}
-          <p className="text-green-500 text-lg font-medium mb-4">Welcome to Fresh Harvest</p>
+          <p className="text-green-500 text-sm font-medium mb-4">Welcome to Fresh Harvest</p>
           
           {/* Main Heading */}
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6 leading-tight">
-            Fresh Fruits and Vegetables
+            Fresh Fruits and<br />Vegetables
           </h1>
           
           {/* Description */}
           <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
-            We are passionate about bringing you the freshest, highest-quality fruits and vegetables 
-            directly from local farms to your table. Experience the difference that fresh, organic 
-            produce makes in your daily meals.
+            At Fresh Harvests, we are passionate about providing you with the freshest and most flavorful fruits and vegetables.
           </p>
           
           {/* Shop Now Button */}
@@ -41,10 +51,10 @@ export function FreshHarvestsHero() {
                 </svg>
               </div>
               
-              <div className="bg-white border-2 border-green-500 rounded-xl p-6 shadow-lg">
+              <div className="bg-white border border-gray-300 rounded-xl p-6 shadow-lg">
                 <div className="flex items-center justify-between">
                   <div className="flex-1">
-                    <p className="text-green-500 font-semibold text-sm mb-2">Special Offer</p>
+                    <p className="text-gray-500 font-semibold text-sm mb-2">Special Offer</p>
                     <h3 className="text-xl md:text-2xl font-bold text-gray-800 mb-2">Fresh Salad</h3>
                     <p className="text-green-600 font-bold text-base md:text-lg mb-4">Up to 70% off</p>
                     <button className="bg-green-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors text-sm">
@@ -52,8 +62,8 @@ export function FreshHarvestsHero() {
                     </button>
                   </div>
                   <div className="ml-4 md:ml-6">
-                    <div className="w-16 h-16 md:w-20 md:h-20 bg-green-100 rounded-full flex items-center justify-center overflow-hidden">
-                      <div className="text-green-600 text-xl md:text-2xl">🥗</div>
+                    <div className="w-16 h-16 md:w-20 md:h-20 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
+                      <div className="text-2xl">🥗</div>
                     </div>
                   </div>
                 </div>
@@ -63,7 +73,7 @@ export function FreshHarvestsHero() {
           
           {/* App Download Section */}
           <div className="mt-8 md:mt-12">
-            <p className="text-gray-600 text-sm mb-4">Download our app for the best experience</p>
+            <p className="text-gray-600 text-sm mb-4">Download App:</p>
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
               <button className="flex items-center justify-center space-x-2 bg-black text-white px-4 py-3 rounded-lg hover:bg-gray-800 transition-colors">
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
@@ -80,7 +90,7 @@ export function FreshHarvestsHero() {
                   <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
                 </svg>
                 <div className="text-left">
-                  <div className="text-xs">Get it on</div>
+                  <div className="text-xs">GET IT ON</div>
                   <div className="text-sm font-semibold">Google Play</div>
                 </div>
               </button>
@@ -91,12 +101,19 @@ export function FreshHarvestsHero() {
       
       {/* Right Section - Image */}
       <div className="flex-1 bg-green-500 relative overflow-hidden hidden lg:block">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-16 h-16 bg-white rounded-full"></div>
-          <div className="absolute top-40 right-20 w-12 h-12 bg-white rounded-full"></div>
-          <div className="absolute bottom-32 left-20 w-20 h-20 bg-white rounded-full"></div>
-          <div className="absolute bottom-20 right-10 w-14 h-14 bg-white rounded-full"></div>
+        {/* Background Pattern - Vegetable Illustrations */}
+        <div className="absolute inset-0 opacity-20">
+          {/* Carrot */}
+          <div className="absolute top-20 left-10 w-8 h-12 bg-green-300 rounded-full transform rotate-12"></div>
+          {/* Broccoli */}
+          <div className="absolute top-40 right-20 w-10 h-10 bg-green-300 rounded-full"></div>
+          {/* Corn */}
+          <div className="absolute bottom-32 left-20 w-6 h-16 bg-green-300 rounded-full"></div>
+          {/* Bell Pepper */}
+          <div className="absolute bottom-20 right-10 w-12 h-8 bg-green-300 rounded-full"></div>
+          {/* Additional vegetables */}
+          <div className="absolute top-60 left-1/4 w-6 h-6 bg-green-300 rounded-full"></div>
+          <div className="absolute bottom-40 right-1/3 w-8 h-8 bg-green-300 rounded-full"></div>
         </div>
         
         {/* Main Image */}
@@ -115,12 +132,13 @@ export function FreshHarvestsHero() {
                 width={500}
                 height={600}
                 alt="Girl with fresh vegetables"
-                className="rounded-lg"
+                className="rounded-lg bg-white"
               >
-                <div className="text-center">
-                  <div className="text-6xl mb-4">👧</div>
-                  <div className="text-4xl mb-2">🥕🥬🍅</div>
-                  <p className="text-sm text-gray-600">Fresh Vegetables</p>
+                <div className="text-center p-8">
+                  <div className="text-8xl mb-6">👧</div>
+                  <div className="text-5xl mb-4">🥕🥬🍅🥒</div>
+                  <p className="text-lg text-gray-600 font-medium">Fresh Vegetables</p>
+                  <p className="text-sm text-gray-500 mt-2">From local farms to your table</p>
                 </div>
               </PlaceholderImage>
               
