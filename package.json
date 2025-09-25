@@ -3,14 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node scripts/dev-config.js && next dev",
+    "dev:clean": "node scripts/dev-clean.js",
+    "dev:fresh": "rm -rf .next node_modules/.cache && npm run dev",
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "setup": "node scripts/setup-env.js"
+    "setup": "node scripts/setup-env.js",
+    "clean": "rm -rf .next node_modules/.cache"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.9.0",

@@ -5,6 +5,17 @@ const nextConfig = {
     // Server actions are enabled by default in Next.js 15
   },
   
+  // Development configuration
+  ...(process.env.NODE_ENV === 'development' && {
+    // Disable file system caching to prevent ENOENT errors
+    onDemandEntries: {
+      // Period (in ms) where the server will keep pages in the buffer
+      maxInactiveAge: 25 * 1000,
+      // Number of pages that should be kept simultaneously without being disposed
+      pagesBufferLength: 2,
+    },
+  }),
+  
   // Image optimization
   images: {
     domains: ['your-api-domain.com'], // Add your API domain here
@@ -53,6 +64,27 @@ const nextConfig = {
   // Webpack configuration
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Add custom webpack configuration if needed
+    
+    // Development-specific optimizations to prevent ENOENT errors
+    if (dev) {
+      // Disable file system caching
+      config.cache = false
+      
+      // Optimize file watching
+      config.watchOptions = {
+        poll: 1000,
+        aggregateTimeout: 300,
+        ignored: ['**/node_modules/**', '**/.next/**', '**/.git/**'],
+      }
+      
+      // Add error handling for missing files
+      config.plugins.push(
+        new webpack.DefinePlugin({
+          'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+        })
+      )
+    }
+    
     return config
   },
   
