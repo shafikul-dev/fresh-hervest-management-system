@@ -82,13 +82,13 @@ export function SeasonalFruitBundle() {
           </div>
 
           {/* Right Image */}
-          <div className="flex-1">
+          <div className="flex-1 w-full">
             <div className="relative">
               <PlaceholderImage
                 width={500}
                 height={400}
                 alt="Seasonal Fruit Bundle"
-                className="rounded-lg"
+                className="rounded-lg w-full h-auto"
               >
                 <div className="text-center p-8">
                   <div className="text-6xl mb-4">🍊🍋🥝🍓</div>

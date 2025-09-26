@@ -6,8 +6,8 @@ import { useGetProductByIdQuery, useGetProductsQuery } from "@/store/api/apiSlic
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage"
 import { useState, useMemo } from "react"
 import type { Product, PaginatedResponse } from "@/types"
-import { FreshHarvestsHeader } from "@/components/layout/FreshHarvestsHeader"
-import { FreshHarvestsFooter } from "@/components/layout/FreshHarvestsFooter"
+import { Header } from "@/components/layout/Header"
+import { Footer } from "@/components/layout/Footer"
 
 function getEmojiForProduct(name: string): string {
   const n = name.toLowerCase()
@@ -71,7 +71,7 @@ export default function ProductDetailsPage() {
 
   return (
     <div className="min-h-screen bg-white flex flex-col">
-      <FreshHarvestsHeader />
+      <Header />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-6 sm:py-8 w-full">
         {/* Breadcrumbs */}
         <div className="text-xs sm:text-sm text-gray-500 mb-4 sm:mb-6 flex flex-wrap gap-1">
@@ -167,8 +167,8 @@ export default function ProductDetailsPage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5">
             {relatedItems.map((p) => (
-              <Link key={p.id} href={`/products/${p.id}`} className="block group">
-                <div className="bg-white border rounded-xl p-2 sm:p-4 hover:shadow-md transition-shadow">
+              <Link key={p.id} href={`/products/${p.id}`} className="block group h-full">
+                <div className="bg-white border rounded-xl p-2 sm:p-4 hover:shadow-md transition-shadow h-full flex flex-col">
                   <PlaceholderImage
                     src={p.image}
                     alt={p.name}
@@ -178,11 +178,11 @@ export default function ProductDetailsPage() {
                   >
                     <div className="flex items-center justify-center h-28 sm:h-40 text-4xl sm:text-5xl select-none">{getEmojiForProduct(p.name)}</div>
                   </PlaceholderImage>
-                  <div className="mt-2 sm:mt-3">
+                  <div className="mt-2 sm:mt-3 flex-1 flex flex-col">
                     <p className="text-[11px] sm:text-sm text-gray-500">{p.category || "Fruit"}</p>
                     <p className="font-semibold text-gray-900 truncate text-sm sm:text-base">{p.name}</p>
                     <p className="text-green-600 font-semibold text-sm sm:text-base">${Number(p.price || 0).toFixed(2)}</p>
-                    <span className="inline-block mt-1 text-[11px] sm:text-xs text-gray-600 group-hover:text-green-600 bg-gray-100 rounded-md px-2 py-1">Add to cart</span>
+                    <span className="inline-block mt-auto pt-2 text-[11px] sm:text-xs text-gray-600 group-hover:text-green-600 bg-gray-100 rounded-md px-2 py-1">Add to cart</span>
                   </div>
                 </div>
               </Link>
@@ -190,7 +190,7 @@ export default function ProductDetailsPage() {
           </div>
         </div>
       </div>
-      <FreshHarvestsFooter />
+      <Footer />
     </div>
   )
 }

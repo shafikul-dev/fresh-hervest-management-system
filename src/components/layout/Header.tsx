@@ -1,10 +1,24 @@
 'use client'
 
 import Link from 'next/link'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { LoginModal } from '@/components/auth/LoginModal'
+import { RegisterModal } from '@/components/auth/RegisterModal'
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [loginOpen, setLoginOpen] = useState(false)
+  const [registerOpen, setRegisterOpen] = useState(false)
+
+  // Listen for cross-modal open events (client-only)
+  useEffect(() => {
+    function openRegister() { setRegisterOpen(true) }
+    if (typeof window !== 'undefined') {
+      window.addEventListener('open-register-modal', openRegister as EventListener)
+      return () => window.removeEventListener('open-register-modal', openRegister as EventListener)
+    }
+    return () => {}
+  }, [])
 
   return (
     <header className="bg-white px-4 sm:px-6 py-4">
@@ -63,7 +77,7 @@ export function Header() {
           </button>
 
           {/* Sign In Button */}
-          <button className="bg-green-500 text-white px-3 sm:px-4 lg:px-6 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors text-sm sm:text-base">
+          <button onClick={() => setLoginOpen(true)} className="bg-green-500 text-white px-3 sm:px-4 lg:px-6 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors text-sm sm:text-base">
             <span className="hidden sm:inline">Sign in</span>
             <span className="sm:hidden">Sign in</span>
           </button>
@@ -118,7 +132,7 @@ export function Header() {
               Blog
             </Link>
             <div className="px-4 py-2 border-t border-gray-200 mt-4">
-              <button className="bg-green-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors w-full">
+              <button onClick={() => { setIsMenuOpen(false); setLoginOpen(true) }} className="bg-green-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors w-full">
                 Sign in
               </button>
             </div>
@@ -126,12 +140,8 @@ export function Header() {
         </div>
       )}
 
-      {/* User Profile Section - Overlay - Hidden on mobile to avoid conflicts */}
-      <div className="hidden lg:block absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
-      
-      
-
-      </div>
+      <LoginModal open={loginOpen} onClose={() => setLoginOpen(false)} />
+      <RegisterModal open={registerOpen} onClose={() => setRegisterOpen(false)} onOpenLogin={() => setLoginOpen(true)} />
     </header>
   )
 }

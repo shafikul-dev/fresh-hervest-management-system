@@ -25,6 +25,17 @@ body {
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
 }
 
+/* Show pointer cursor on interactive elements to improve UX */
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.clickable,
+a[href] {
+  cursor: pointer;
+}
+
 /* Custom Rubik utility */
 @utility font-rubik {
   font-family: var(--font-rubik), var(--font-geist-sans), system-ui, -apple-system, sans-serif;

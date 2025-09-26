@@ -2,7 +2,7 @@
 
 export function FreshSeasonalFruitsCard() {
   return (
-    <div className="bg-gray-100 rounded-xl p-6 sm:p-8 max-w-md mx-auto shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <div className="relative w-full bg-gray-100 rounded-xl p-4 sm:p-6 md:p-8 max-w-md mx-auto shadow md:shadow-lg hover:shadow-xl transition-shadow duration-300">
       {/* Fruit Illustrations */}
       <div className="flex justify-center items-center space-x-4 sm:space-x-6 mb-6">
         {/* Orange */}
@@ -57,7 +57,7 @@ export function FreshSeasonalFruitsCard() {
       </div>
 
       {/* Optional: Add a subtle background pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
+      <div className="absolute inset-0 opacity-5 pointer-events-none rounded-xl overflow-hidden">
         <div className="absolute top-4 left-4 w-8 h-8 bg-green-300 rounded-full"></div>
         <div className="absolute bottom-4 right-4 w-6 h-6 bg-orange-300 rounded-full"></div>
         <div className="absolute top-1/2 left-2 w-4 h-4 bg-yellow-300 rounded-full"></div>
