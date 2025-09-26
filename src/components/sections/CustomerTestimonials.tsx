@@ -34,16 +34,12 @@ export function CustomerTestimonials() {
           <div className="flex-shrink-0">
             <div className="relative">
               <PlaceholderImage
+                src="/images/surprised-young-male-gardener-wearing-gardening-hat-holds-vegetable-basket-grapes.jpg"
                 width={200}
                 height={200}
                 alt="Customer testimonial"
-                className="rounded-full"
-              >
-                <div className="text-center p-8">
-                  <div className="text-6xl mb-2">👨‍🌾</div>
-                  <p className="text-sm text-gray-600">Happy Customer</p>
-                </div>
-              </PlaceholderImage>
+                className="w-48 h-48 rounded-full object-cover"
+              />
               
               {/* Decorative orange splashes */}
               <div className="absolute -top-2 -right-2 w-4 h-4 bg-orange-400 rounded-full opacity-60"></div>

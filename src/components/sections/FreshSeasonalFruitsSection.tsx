@@ -1,79 +1,114 @@
 'use client'
 
 import Link from 'next/link'
-import { FreshSeasonalFruitsCard } from '@/components/ui/FreshSeasonalFruitsCard'
+import { useMemo, useState } from 'react'
+import { useGetProductsQuery } from '@/store/api/apiSlice'
+import { PlaceholderImage } from '@/components/ui/PlaceholderImage'
+import type { Product } from '@/types'
+
+const FILTERS = [
+  { key: 'all', label: 'All' },
+  { key: 'fruits', label: 'Fruits' },
+  { key: 'vegetables', label: 'Vegetables' },
+  { key: 'salad', label: 'Salad' },
+] as const
+
+type FilterKey = (typeof FILTERS)[number]['key']
+
+function inferGroup(p: Product): FilterKey {
+  const n = (p.name || '').toLowerCase()
+  if (/(salad)/.test(n)) return 'salad'
+  if (/(lettuce|cabbage|cauliflower|onion|eggplant|mushroom|mustard|peas)/.test(n)) return 'vegetables'
+  return 'fruits'
+}
 
 export function FreshSeasonalFruitsSection() {
-  // Known product ids from live API for deep links
-  const appleId = '6752c7281cdb919fe028cf2a'
-  const bananaId = '67514a611cdb919fe028cf09'
-  const kiwiId = '6751563d1cdb919fe028cf0d'
+  const { data, isLoading, isError, refetch } = useGetProductsQuery({})
+  const [active, setActive] = useState<FilterKey>('all')
+
+  const products = (data?.data ?? []) as Product[]
+
+  const filtered = useMemo(() => {
+    const list = active === 'all' ? products : products.filter((p) => inferGroup(p) === active)
+    return list.slice(0, 8)
+  }, [products, active])
 
   return (
-    <section className="py-12 sm:py-16 bg-white">
+    <section className="py-14 sm:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6">
-        {/* Section Header */}
-        <div className="text-center mb-12 relative">
-          {/* Decorative leaves */}
-          <div className="absolute left-0 top-1/2 transform -translate-y-1/2 text-green-500 opacity-60 hidden md:block">
-            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 6,17.25C7.5,17.25 9,16.5 10,15.5C11,14.5 12,13.5 13,12.5C14,11.5 15,10.5 16,9.5C17,8.5 17,8 17,8Z"/>
-            </svg>
-          </div>
-          
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Fresh Seasonal Fruits
-          </h2>
-          <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover our premium selection of seasonal fruits, handpicked for the freshest taste and highest quality.
+        {/* Header */}
+        <div className="text-center mb-8 sm:mb-10">
+          <span className="inline-block text-[10px] sm:text-xs uppercase tracking-wide text-green-600 bg-green-50 px-3 py-1 rounded-full">Our Products</span>
+          <h2 className="mt-2 text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F172A]">Our Fresh Products</h2>
+          <p className="mt-2 max-w-2xl mx-auto text-sm sm:text-base text-gray-600">
+            We pride ourselves on offering a wide variety of fresh and flavorful fruits,
+            vegetables, and specialty salads.
           </p>
-          
-          <div className="absolute right-0 top-1/2 transform -translate-y-1/2 text-green-500 opacity-60 hidden md:block">
-            <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 6,17.25C7.5,17.25 9,16.5 10,15.5C11,14.5 12,13.5 13,12.5C14,11.5 15,10.5 16,9.5C17,8.5 17,8 17,8Z"/>
-            </svg>
+
+          {/* Filters */}
+          <div className="mt-5 inline-flex items-center gap-2 bg-white p-1 rounded-full border border-gray-200 shadow-sm">
+            {FILTERS.map((f) => (
+              <button
+                key={f.key}
+                onClick={() => setActive(f.key)}
+                className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                  active === f.key
+                    ? 'bg-[#1FAE61] text-white'
+                    : 'bg-transparent text-gray-700 hover:bg-gray-100'
+                }`}
+              >
+                {f.label}
+              </button>
+            ))}
           </div>
         </div>
 
-        {/* Cards Grid - Responsive Layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
-          {/* Main Featured Card (informational) */}
-          <div className="sm:col-span-2 lg:col-span-1">
-            <FreshSeasonalFruitsCard />
+        {/* Loading / Error */}
+        {isLoading && (
+          <div className="py-16 text-center text-gray-500">Loading products…</div>
+        )}
+        {isError && (
+          <div className="py-16 text-center">
+            <p className="text-red-600 mb-3">Failed to load products.</p>
+            <button onClick={() => refetch()} className="px-4 py-2 bg-gray-900 text-white rounded-lg">Retry</button>
           </div>
-          
-          {/* Apple Card (clickable) */}
-          <Link href={`/products/${appleId}`} className="bg-gray-100 rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-center">
-              <div className="text-5xl sm:text-6xl mb-4">🍎</div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Fresh Apples</h3>
-              <p className="text-sm sm:text-base text-gray-600">Crisp and sweet</p>
-            </div>
-          </Link>
-          
-          {/* Banana Card (clickable) */}
-          <Link href={`/products/${bananaId}`} className="bg-gray-100 rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-center">
-              <div className="text-5xl sm:text-6xl mb-4">🍌</div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Organic Bananas</h3>
-              <p className="text-sm sm:text-base text-gray-600">Perfectly ripe</p>
-            </div>
-          </Link>
-          
-          {/* Kiwi Card (clickable) */}
-          <Link href={`/products/${kiwiId}`} className="bg-gray-100 rounded-xl p-6 sm:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <div className="text-center">
-              <div className="text-5xl sm:text-6xl mb-4">🥝</div>
-              <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-2">Fresh Kiwi</h3>
-              <p className="text-sm sm:text-base text-gray-600">Juicy and fresh</p>
-            </div>
-          </Link>
-        </div>
+        )}
 
-        {/* Call to Action */}
-        <div className="text-center mt-12">
-          <Link href="/products" className="inline-block bg-green-500 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-green-600 transition-colors">
-            Shop Fresh Fruits
+        {/* Grid */}
+        {!isLoading && !isError && (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            {filtered.map((p) => (
+              <div key={p.id} className="group bg-white rounded-2xl border border-gray-200 shadow-[0_4px_12px_rgba(16,24,40,0.06)] p-4">
+                <div className="flex items-center justify-center bg-gray-50 rounded-xl mb-4 h-40">
+                  <PlaceholderImage
+                    src={p.image}
+                    alt={p.name}
+                    width={320}
+                    height={200}
+                    className="w-full h-40 object-contain"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <p className="text-sm text-gray-500 leading-none">{p.name}</p>
+                  <p className="text-[#1E293B] font-semibold">${Number(p.price || 0).toFixed(2)}<span className="text-gray-500 text-xs">/kg</span></p>
+                </div>
+                <div className="mt-3">
+                  <Link
+                    href={`/products/${p.id}`}
+                    className="w-full inline-flex items-center justify-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 transition-colors"
+                  >
+                    Add to cart
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* CTA */}
+        <div className="text-center mt-10">
+          <Link href="/products" className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg text-base font-semibold hover:bg-green-700 transition-colors">
+            See all products
           </Link>
         </div>
       </div>

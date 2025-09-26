@@ -25,6 +25,11 @@ body {
   font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
 }
 
+/* Custom Rubik utility */
+@utility font-rubik {
+  font-family: var(--font-rubik), var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+}
+
 /* Custom animations */
 @keyframes float {
   0%, 100% { transform: translateY(0px); }

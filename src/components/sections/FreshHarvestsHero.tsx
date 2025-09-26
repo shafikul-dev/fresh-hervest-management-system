@@ -8,8 +8,11 @@ export function FreshHarvestsHero() {
 
   return (
     <div className="flex flex-col lg:flex-row min-h-screen relative">
+      {/* Right-half background color */}
+      {/* <div className="pointer-events-none absolute inset-y-0 right-0 w-1/2 bg-green-500" /> */}
+
       {/* Left Section - Content */}
-      <div className="flex-1 bg-gray-100 px-4 sm:px-6 py-8 lg:py-16 flex flex-col justify-center relative">
+      <div className="flex-1 bg-transparent px-4 sm:px-6 py-8 lg:py-16 flex flex-col justify-center relative">
         {/* Decorative Leaves */}
         <div className="absolute top-10 left-4 text-green-500 opacity-60">
           <svg className="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
@@ -40,36 +43,65 @@ export function FreshHarvestsHero() {
           <button className="bg-orange-500 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold hover:bg-orange-600 transition-colors mb-8 w-full sm:w-auto">
             Shop Now
           </button>
+
+
+<div className='flex'>
+
+ <div className='hidden md:block ml-[10vw]'>  
+<svg className='text-green-600' viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg" width="50" height="50" transform="rotate(-90)"><path d="M47.917 10.417q-25-3.125-37.5 12.5c-3.125 4.167-4.167 8.333-4.167 12.5m0 0-4.167-6.25m4.167 6.25 6.25-3.125" stroke="currentColor"/></svg>
+</div>
           
           {/* Special Offer Card */}
           {showSpecialOffer && (
             <div className="relative">
-              {/* Curved Arrow */}
-              <div className="absolute -left-8 top-4 transform rotate-12">
-                <svg className="w-8 h-8 text-green-500" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                </svg>
-              </div>
-              
-              <div className="bg-white border border-gray-300 rounded-xl p-4 sm:p-6 shadow-lg">
-                <div className="flex items-center justify-between">
-                  <div className="flex-1">
-                    <p className="text-gray-500 font-semibold text-sm mb-2">Special Offer</p>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 mb-2">Fresh Salad</h3>
-                    <p className="text-green-600 font-bold text-sm sm:text-base md:text-lg mb-4">Up to 70% off</p>
-                    <button className="bg-green-500 text-white px-3 sm:px-4 py-2 rounded-lg font-medium hover:bg-green-600 transition-colors text-xs sm:text-sm">
-                      CODE: FRESH25
-                    </button>
+              {/* Pointer arrow to the Special Offer card */}
+          
+              {/* Special Offer Card EXACT styling */}
+              <div className="md:w-[361px] md:h-[165px] bg-white border border-gray-200 rounded-2xl p-3 sm:p-4 shadow-[0_6px_16px_rgba(16,24,40,0.06)]">
+                <div className="grid grid-cols-[1fr_auto] gap-3 items-center">
+                  {/* Left text block */}
+                  <div>
+                    <p className="text-[#1FAE61] font-semibold text-xs sm:text-sm mb-1">Special Offer</p>
+                    <h3 className="font-rubik text-[22px] leading-7 sm:text-[24px] sm:leading-8 font-extrabold text-[#1E293B] mb-1">Fresh Salad</h3>
+
+                    <div className="flex items-end gap-1 sm:gap-2 mb-3">
+                      <span className="text-[#1FAE61] font-semibold text-[12px] sm:text-sm">Up to</span>
+                      <span className="text-[#1E293B] font-extrabold text-[22px] sm:text-[26px] leading-none">7</span>
+                      <span className="relative inline-flex items-center justify-center mx-0.5">
+                        <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full ring-2 ring-[#FF7A00] inline-flex items-center justify-center text-[#1E293B] text-[14px] sm:text-[16px] font-extrabold">0</span>
+                      </span>
+                      <span className="text-[#1E293B] font-extrabold text-[22px] sm:text-[26px] leading-none">%</span>
+                      <span className="text-[#0F172A] text-[12px] sm:text-sm ml-1 mb-0.5">off</span>
+                    </div>
+
+                    <div className="inline-flex items-center rounded-full px-3 py-1.5 bg-[#0A3D2E]">
+                      <span className="text-white/90 text-[11px] sm:text-xs tracking-wide mr-1.5">CODE :</span>
+                      <span className="text-[#F7C94A] text-[12px] sm:text-sm font-semibold tracking-wide">FRESH25</span>
+                    </div>
                   </div>
-                  <div className="ml-3 sm:ml-4 md:ml-6">
-                    <div className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-                      <div className="text-green-600 text-lg sm:text-xl md:text-2xl">🥗</div>
+
+                  {/* Salad bowl built with CSS (no external image) */}
+                  <div className="flex justify-end">
+                    <div className="relative w-[86px] h-[86px] sm:w-[100px] sm:h-[100px] rounded-full bg-white shadow-[0_6px_16px_rgba(16,24,40,0.06)] p-1">
+                      <div className="relative w-full h-full rounded-full bg-gradient-to-br from-[#d9f8d8] to-[#bcecc0] overflow-hidden">
+                        {/* greens */}
+                        <span className="absolute left-2 top-3 w-8 h-3 rounded-full bg-[#6fcf97] rotate-12"></span>
+                        <span className="absolute left-5 top-6 w-10 h-3 rounded-full bg-[#7bd39e] -rotate-6"></span>
+                        <span className="absolute right-3 top-5 w-9 h-3 rounded-full bg-[#5fce8e] rotate-3"></span>
+                        {/* red strawberries */}
+                        <span className="absolute left-3 bottom-4 w-4 h-4 rounded-full bg-[#ff5a5f] shadow-inner"></span>
+                        <span className="absolute right-4 bottom-6 w-4 h-4 rounded-full bg-[#ff6b6f] shadow-inner"></span>
+                        {/* lime slice */}
+                        <span className="absolute left-7 top-2 w-6 h-6 rounded-full border-2 border-white/70"></span>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           )}
+
+</div>
           
           {/* App Download Section */}
           <div className="mt-8 md:mt-12">
@@ -100,30 +132,21 @@ export function FreshHarvestsHero() {
       </div>
       
       {/* Right Section - Image */}
-      <div className="flex-1 bg-green-500 relative overflow-hidden lg:block">
-        {/* Background Pattern - Vegetable Illustrations */}
-        <div className="absolute inset-0 opacity-20">
-          <div className="absolute top-20 left-10 w-8 h-12 bg-green-300 rounded-full transform rotate-12"></div>
-          <div className="absolute top-40 right-20 w-10 h-10 bg-green-300 rounded-full"></div>
-          <div className="absolute bottom-32 left-20 w-6 h-16 bg-green-300 rounded-full"></div>
-          <div className="absolute bottom-20 right-10 w-12 h-8 bg-green-300 rounded-full"></div>
-          <div className="absolute top-60 left-1/4 w-6 h-6 bg-green-300 rounded-full"></div>
-          <div className="absolute bottom-40 right-1/3 w-8 h-8 bg-green-300 rounded-full"></div>
-        </div>
+      <div className="flex-1 relative overflow-hidden lg:block">
+        
+
+        
         
         {/* Main Image */}
-        <div className="relative z-10 flex items-center justify-center h-full p-6 sm:p-8">
+        <div className="relative z-10 flex items-center justify-center   ">
           <div className="relative w-full max-w-xl">
-            {/* Girl with Vegetables - responsive image */}
             <PlaceholderImage
-              src="/images/girl with vegetable.jpg"
+              src="/images/girl with vegetable.png"
               width={800}
               height={800}
               alt="Girl with fresh vegetables"
-              className="w-full h-auto rounded-lg shadow-lg"
+              className="w-full h-auto rounded-lg "
             />
-            
-            {/* Optional spark icons removed for cleaner photo focus */}
           </div>
         </div>
       </div>
